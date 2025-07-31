@@ -1,7 +1,7 @@
 # hello_cuda
 cuda programming for beginner
 
-## NVIDIA devier install
+## NVIDIA driver install
 ```
 sudo apt update
 sudo apt install nvidia-driver-535
