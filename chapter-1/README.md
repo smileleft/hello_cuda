@@ -11,3 +11,8 @@ cd build
 cmake ..
 make
 ```
+
+## Execute
+```
+./hello_cu
+```
