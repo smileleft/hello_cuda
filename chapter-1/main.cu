@@ -1,4 +1,8 @@
 #include <cstdio>
+
+dim3 threadsPerBlock(16, 16);
+dim3 blocks((N + threadsPerBlock.x - 1) / threadsPerBlock.x, (M + threadsPerBlock.y - 1) / threadsPerBlock.y);
+
  
 __global__ void increment_kernel(int* d_val) {
     // 모든 스레드가 d_val[0]을 1 증가
