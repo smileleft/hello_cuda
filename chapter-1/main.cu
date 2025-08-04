@@ -4,6 +4,13 @@ __global__ void increment_kernel(int* d_val) {
     // 모든 스레드가 d_val[0]을 1 증가
     d_val[0] += 1;
 }
+
+__global__ void vector_add_kernel(const float* a, const float* b, float* c, int N) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x; 
+    if (idx < N) {
+        c[idx] = a[idx] + b[idx];
+    }
+}
  
 int main() {
     int h_val = 10;          // Host 메모리에 있는 정수
