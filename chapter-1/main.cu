@@ -3,6 +3,17 @@
 dim3 threadsPerBlock(16, 16);
 dim3 blocks((N + threadsPerBlock.x - 1) / threadsPerBlock.x, (M + threadsPerBlock.y - 1) / threadsPerBlock.y);
 
+__global__ void process_image_kernel(const unsigned char* input, unsigned char* output, int M, int N) {
+    int x = blockIdx.x * blockDim.x + threadIdx.x; // 열 인덱스
+    int y = blockIdx.y * blockDim.y + threadIdx.y; // 행 인덱스
+ 
+    if (x < N && y < M) {
+        int idx = y * N + x; 
+        // 여기서 픽셀을 처리. 예: grayscale 변환 등
+        output[idx] = 255 - input[idx]; // 단순 반전 예제
+    }
+}
+
  
 __global__ void increment_kernel(int* d_val) {
     // 모든 스레드가 d_val[0]을 1 증가
